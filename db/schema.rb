@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_07_215857) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_07_233908) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -40,16 +40,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_215857) do
   create_table "beers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.float "price"
+    t.string "description"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_beers_on_category_id"
   end
 
   create_table "breweries", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "description"
   end
 
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "installs", force: :cascade do |t|
@@ -67,6 +75,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_215857) do
   create_table "reviews", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "comment"
+    t.integer "rating"
+    t.integer "beer_id", null: false
+    t.integer "user_id", null: false
+    t.index ["beer_id"], name: "index_reviews_on_beer_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,4 +96,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_215857) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reviews", "beers"
+  add_foreign_key "reviews", "users"
 end
