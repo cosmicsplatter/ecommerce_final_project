@@ -1,4 +1,4 @@
-require Faker
+require "faker"
 
 if Rails.env.development?
   AdminUser.create!(email: "admin@example.com", password: "password",
@@ -30,12 +30,7 @@ Option.create!(option_name: "Option Nine", option_description: Faker::Lorem.sent
 
 80.times do
   Product.create!(product_name:        Faker::Lorem.word,
-                  product_price:       Faker::Commerce.price(75.0..10_000.0),
+                  product_price:       Faker::Commerce.price(range: 75.0..10_000.0),
                   product_image:       "",
                   product_description: Faker::Lorem.sentence)
-end
-
-160.times do
-  Product_Option.create!(product: "Products.sample", option: "Options.sample")
-  Product_Category.create!(product: "Products.sample", category: "Categories.sample")
 end

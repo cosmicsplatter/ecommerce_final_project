@@ -52,6 +52,9 @@ gem "bootsnap", require: false
 gem 'activeadmin'
 gem 'devise'
 gem 'sassc-rails'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 

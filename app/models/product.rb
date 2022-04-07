@@ -1,4 +1,4 @@
 class Product < ApplicationRecord
-  has_many :category, through: "product_category"
-  has_many :option, through: "product_option"
+  # has_many :categories, through: "product_categories"
+  # has_many :options, through: "product_options"
 end
