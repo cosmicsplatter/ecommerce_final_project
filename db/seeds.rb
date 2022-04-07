@@ -1,7 +1,41 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require Faker
+
+if Rails.env.development?
+  AdminUser.create!(email: "admin@example.com", password: "password",
+                    password_confirmation: "password")
+end
+
+Category.create!(category_name: "Analog", category_description: Faker::Lorem.sentence)
+Category.create!(category_name: "Digital", category_description: Faker::Lorem.sentence)
+Category.create!(category_name: "Automatic", category_description: Faker::Lorem.sentence)
+Category.create!(category_name: "Chronograph", category_description: Faker::Lorem.sentence)
+Category.create!(category_name: "Dress", category_description: Faker::Lorem.sentence)
+Category.create!(category_name: "Diving", category_description: Faker::Lorem.sentence)
+Category.create!(category_name: "Quartz", category_description: Faker::Lorem.sentence)
+Category.create!(category_name: "Mechanical", category_description: Faker::Lorem.sentence)
+Category.create!(category_name: "Pilot", category_description: Faker::Lorem.sentence)
+Category.create!(category_name: "Field", category_description: Faker::Lorem.sentence)
+Category.create!(category_name: "Smart", category_description: Faker::Lorem.sentence)
+Category.create!(category_name: "Luxury", category_description: Faker::Lorem.sentence)
+
+Option.create!(option_name: "Option One", option_description: Faker::Lorem.sentence)
+Option.create!(option_name: "Option Two", option_description: Faker::Lorem.sentence)
+Option.create!(option_name: "Option Three", option_description: Faker::Lorem.sentence)
+Option.create!(option_name: "Option Four", option_description: Faker::Lorem.sentence)
+Option.create!(option_name: "Option Five", option_description: Faker::Lorem.sentence)
+Option.create!(option_name: "Option Six", option_description: Faker::Lorem.sentence)
+Option.create!(option_name: "Option Seven", option_description: Faker::Lorem.sentence)
+Option.create!(option_name: "Option Eight", option_description: Faker::Lorem.sentence)
+Option.create!(option_name: "Option Nine", option_description: Faker::Lorem.sentence)
+
+80.times do
+  Product.create!(product_name:        Faker::Lorem.word,
+                  product_price:       Faker::Commerce.price(75.0..10_000.0),
+                  product_image:       "",
+                  product_description: Faker::Lorem.sentence)
+end
+
+160.times do
+  Product_Option.create!(product: "Products.sample", option: "Options.sample")
+  Product_Category.create!(product: "Products.sample", category: "Categories.sample")
+end
