@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "home/about"
   root "home#index"
 
-  resources :products
-  resources :options
+  resources :beers
+  resources :breweries
   resources :categories
 end
