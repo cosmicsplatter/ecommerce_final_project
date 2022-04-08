@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_07_233908) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_08_001750) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -44,6 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_233908) do
     t.float "price"
     t.string "description"
     t.integer "category_id"
+    t.integer "brewery_id", null: false
+    t.index ["brewery_id"], name: "index_beers_on_brewery_id"
     t.index ["category_id"], name: "index_beers_on_category_id"
   end
 
@@ -96,6 +98,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_233908) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "beers", "breweries"
   add_foreign_key "reviews", "beers"
   add_foreign_key "reviews", "users"
 end
