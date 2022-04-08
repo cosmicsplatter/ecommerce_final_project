@@ -53,6 +53,7 @@ gem 'activeadmin'
 gem 'devise'
 gem 'sassc-rails'
 gem 'kaminari'
+gem 'country_select'
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
