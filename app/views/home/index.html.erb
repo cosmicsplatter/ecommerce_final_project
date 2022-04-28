@@ -3,7 +3,10 @@
 <ul>
 <% @beers.each do |beer| %>
   <li>
-    <p><%=link_to beer.name, beer%></p>
+    <% if user_signed_in? %>
+      <p><%=link_to beer.name, beer%></p>
+    <% else link_to beer.name, flash.alert = "Please log in or create an account!" %>
+    <% end %>
   </li>
 <%end%>
 </ul>
