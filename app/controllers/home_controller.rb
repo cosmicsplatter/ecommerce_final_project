@@ -24,7 +24,7 @@ class HomeController < ApplicationController
   end
 
   def load_cart
-    @cart = session[:cart]
+    @cart = Beer.find(session[:cart])
   end
 
   def increment_visit_count
