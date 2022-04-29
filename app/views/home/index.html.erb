@@ -1,14 +1,10 @@
 <h1>Home</h1>
 
-<ul>
 <% @beers.each do |beer| %>
-  <li>
-    <% if user_signed_in? %>
-      <p><%=link_to beer.name, beer%></p>
-    <% else link_to beer.name, flash.alert = "Please log in or create an account!" %>
-    <% end %>
-  </li>
+  <h3><%= beer.name %></h3>
+  <p>Price: <%= number_to_currency beer.price %> </p>
+  <p><%= beer.description%></p>
 <%end%>
-</ul>
+
 
 <%= paginate @beers %>
