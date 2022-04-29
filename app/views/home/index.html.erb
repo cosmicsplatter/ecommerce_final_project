@@ -1,10 +1,22 @@
 <h1>Home</h1>
-
+<details>
+  <summary>Shopping Cart</summary>
+  <ul>
+    <% @cart.each do |beer| %>
+      <li><%= beer.name %></li>
+    <% end %>
+  </ul>
+</details>
 <% @beers.each do |beer| %>
   <h3><%= beer.name %></h3>
   <p>Price: <%= number_to_currency beer.price %> </p>
   <p><%= beer.description%></p>
-<%end%>
+  <% if @cart.include?(beer) %>
+    <p>Added to cart.</p>
+  <% else %>
+    <p><%= button_to 'Add to cart.', add_to_cart_path(beer.id)%></p>
+  <% end %>
+<% end %>
 
 
 <%= paginate @beers %>
