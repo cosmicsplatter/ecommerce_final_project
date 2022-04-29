@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_28_233234) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_29_042355) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_28_233234) do
     t.string "description"
     t.integer "category_id"
     t.integer "brewery_id", null: false
+    t.string "image"
     t.index ["brewery_id"], name: "index_beers_on_brewery_id"
     t.index ["category_id"], name: "index_beers_on_category_id"
   end
