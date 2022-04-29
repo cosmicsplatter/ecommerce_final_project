@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :review
   has_many :beer, through: :review
+
+  belongs_to :province
 end
