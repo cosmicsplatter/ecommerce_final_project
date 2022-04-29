@@ -14,7 +14,7 @@
   <% if @cart.include?(beer) %>
     <p>Added to cart.</p>
   <% else %>
-    <p><%= button_to 'Add to cart.', add_to_cart_path(beer.id)%></p>
+    <div><%= button_to 'Add to cart.', add_to_cart_path(beer.id) %></div>
   <% end %>
 <% end %>
 
