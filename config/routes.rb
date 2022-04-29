@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get "home/about"
   root "home#index"
 
+  post "home/add_to_cart/:id", to: "home#add_to_cart", as: "add_to_cart"
+  delete "/home/remove_from_cart/:id", to: "home#remove_from_cart", as: "remove_from_cart"
+
   resources :beers
   resources :breweries
   resources :categories
